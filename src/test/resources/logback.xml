@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%-5level] %logger{15} - %msg%n%rEx</pattern>
+			<immediateFlush>false</immediateFlush>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>target/logs/test.log</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%-5level] %logger{15} - %msg%n%rEx</pattern>
+			<immediateFlush>false</immediateFlush>
+		</encoder>
+	</appender>
+
+	<root level="WARN">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+
+	<logger name="io.gatling.http.ahc" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="FILE" />
+	</logger>
+
+	<logger name="io.gatling.http.response" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="FILE" />
+	</logger>
+</configuration>
